@@ -27,7 +27,6 @@ public class MainPageTest {
     public void logInTest() {
         LoginPage loginPage = mainPage.clickLogin();
         String heading = loginPage.getHeadingText();
-        System.out.println(heading);
         Assert.assertEquals("Вход на сайт", heading);
     }
 
