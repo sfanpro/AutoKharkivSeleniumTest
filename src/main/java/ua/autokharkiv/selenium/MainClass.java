@@ -8,27 +8,27 @@ import java.util.concurrent.TimeUnit;
 
 public class MainClass {
     public static void main( String[] args ) {
-        //  иницилизируем chrome драйвер
+        //  initialize the chrome driver
         WebDriver driver = new ChromeDriver();
-        // задаем неявные ожидания
+        // set implicit expectations
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        // разворачиваем окно на весь экран
+        // maximize the window
         driver.manage().window().maximize();
 
-        // устанавливаем подключение к сайту
+        // connect to the site
         driver.get("https://auto.kharkiv.ua/");
 
-        // инициализируем главную страницу, страницу регистрации и страницу входа
+        // initialize the main page, registration page and login page
 //        MainPage mainPage = new MainPage(driver);
         MainPage mainPage = PageFactory.initElements(driver, MainPage.class); // используем Page Factory
         RegisterPage registerPage = new RegisterPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
-        // пробуем зарегестрироваться с неверными данными
+        // try to register with incorrect data
         mainPage.clickRegister();
         registerPage.registerWithInvalidInput("qwer", "qwe", "qwe@123", "qwe");
 
-        // пробуем залогинитьтся с неверными данными
+        // try to login with incorrect data
         mainPage.clickLogin();
         loginPage.loginWithInvalidInput("asd", "asd");
     }

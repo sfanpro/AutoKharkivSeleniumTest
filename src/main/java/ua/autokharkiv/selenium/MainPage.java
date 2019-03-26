@@ -8,29 +8,29 @@ import org.openqa.selenium.support.FindBy;
  *Здесь используется selenium класс Page Factory
  */
 public class MainPage {
-    // создаем драйвер
+    // initialize the driver
     private WebDriver driver;
 
-    // создаем конструктор
+    // build constructor
     public MainPage( WebDriver driver ) {
         this.driver = driver;
     }
 
-    // инициализируем стриницу входа
+    // initialize login page
     @FindBy(xpath = "//a[@href='/login']")
     private WebElement login;
 
-    // инициализируем стриницу регисрации
+    // initialize register page
     @FindBy(xpath = "//a[text()='Регистрация']")
     private WebElement register;
 
-    // переходим на страницу входа
+    // follow the link to the login page
     public LoginPage clickLogin() {
         login.click();
         return new LoginPage(driver);
     }
 
-    // переходим на страницу регистрации
+    // follow the link to the register page
     public RegisterPage clickRegister() {
         register.click();
         return new RegisterPage(driver);

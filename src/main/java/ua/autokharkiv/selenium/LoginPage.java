@@ -4,15 +4,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
-    // создаем драйвер
+    // initialize the driver
     private WebDriver driver;
 
-    // создаем конструктор
+    // build constructor
     public LoginPage( WebDriver driver ) {
         this.driver = driver;
     }
 
-    // создаем наши переменные это поля и элементы страницы
+    // initialize our variables: fields and page elements
     private By usernameField = By.xpath("//input[@name='_username']");
     private By passwordField = By.xpath("//input[@placeholder='Пароль']");
     private By loginButton = By.xpath("//button[@id='_submit']");
@@ -21,19 +21,19 @@ public class LoginPage {
     private By error = By.xpath("//div[@class='alert alert-danger']");
     private By createAccountLink = By.xpath("//a[@id='register-btn']");
 
-    // метод для ввода имени
+    // name input method
     public LoginPage typeUsername( String username ) {
         driver.findElement(usernameField).sendKeys(username);
         return this;
     }
 
-    // метод для ввода пароля
+    // password input method
     public LoginPage typePassword( String password ) {
         driver.findElement(passwordField).sendKeys(password);
         return this;
     }
 
-    // метод для входа с недействительными данными
+    // login with invalid data method
     public LoginPage loginWithInvalidInput( String username, String password ) {
         this.typeUsername(username);
         this.typePassword(password);
@@ -44,17 +44,17 @@ public class LoginPage {
         return new LoginPage(driver);
     }
 
-    // метод для получения текста заголовка страницы
+    // getting the page header text method
     public String getHeadingText() {
         return driver.findElement(heading).getText();
     }
 
-    // метод для получения текста ошибки страницы
+    // getting text error page method
     public String getErrorText() {
         return driver.findElement(error).getText();
     }
 
-    // метод для перехода по ссылке "Создать аккаунт"
+    // click on the link "Create an account" method
     public RegisterPage createAccount() {
         driver.findElement(createAccountLink).click();
         return new RegisterPage(driver);
