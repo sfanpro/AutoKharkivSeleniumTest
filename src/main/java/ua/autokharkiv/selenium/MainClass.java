@@ -20,7 +20,7 @@ public class MainClass {
 
         // инициализируем главную страницу, страницу регистрации и страницу входа
 //        MainPage mainPage = new MainPage(driver);
-        MainPage mainPage = PageFactory.initElements(driver, MainPage.class);
+        MainPage mainPage = PageFactory.initElements(driver, MainPage.class); // используем Page Factory
         RegisterPage registerPage = new RegisterPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
