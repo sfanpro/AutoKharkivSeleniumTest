@@ -17,6 +17,7 @@ public class LoginPage {
     private By heading = By.xpath("//h3[@class='form-title']");
     private By error = By.xpath("//div[@class='alert alert-danger']");
     private By createAccountLink = By.xpath("//a[@id='register-btn']");
+    private By forgetPassword = By.xpath("//a[@id='forget-password']");
 
     public LoginPage typeUsername( String username ) {
         driver.findElement(usernameField).sendKeys(username);
@@ -49,5 +50,9 @@ public class LoginPage {
     public RegisterPage createAccount() {
         driver.findElement(createAccountLink).click();
         return new RegisterPage(driver);
+    }
+    public LoginPage forgetPasswordClick (){
+        driver.findElement(forgetPassword).click();
+        return  new LoginPage(driver);
     }
 }
